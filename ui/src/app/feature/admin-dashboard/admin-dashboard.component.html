@@ -1,0 +1,23 @@
+<course-pf-layout>
+    <div class="users-list">
+        <h2 class="users-list__header">Список пользователей</h2>
+        <table mat-table [dataSource]="usersList">
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+            </ng-container>
+            <ng-container matColumnDef="isReset">
+                <th mat-header-cell *matHeaderCellDef> Пароль изменен </th>
+                <td mat-cell *matCellDef="let element"> {{ element.isReset }} </td>
+            </ng-container>
+            <ng-container matColumnDef="courses">
+                <th mat-header-cell *matHeaderCellDef> Курсы </th>
+                <td mat-cell *matCellDef="let element">
+                    <span *ngFor="let course of element.courses"> {{ course.courseName }}</span>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</course-pf-layout>

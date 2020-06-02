@@ -1,0 +1,21 @@
+<div class="menu" [ngClass]="{ 'nested': index > 0}">
+    <div class="menu__item" *ngFor="let chapter of chapters, let i = index">
+        <button *ngIf="!chapter?.chapters?.length"
+                class="menu__button"
+                [ngClass]="{ 'active': (activeTab | async) === chapter.id}"
+                (click)="selectionChange(chapter)">
+            <span class="index">{{ i + 1 }}<span *ngIf="index">.{{index}}</span></span>{{ chapter.chapterName }}
+        </button>
+        <mat-accordion *ngIf="chapter?.chapters?.length">
+            <mat-expansion-panel class="expansion-panel" [expanded]="i === 0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span class="index">{{ i + 1 }}<span *ngIf="index">.{{index}}</span></span>
+                        {{ chapter.chapterName }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <course-pf-course-nav [chapters]="chapter.chapters" [index]="i + 1" (chapterSelect)="selectionChange($event)"></course-pf-course-nav>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>

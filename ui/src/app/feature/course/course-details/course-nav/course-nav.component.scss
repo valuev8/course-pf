@@ -1,0 +1,65 @@
+@import "../../../../../styles/variables";
+
+.menu {
+  border-right: 1px solid;
+  font-size: 14px;
+
+  &.nested {
+    border-right: none;
+    padding-left: 10px;
+
+    .menu__button {
+      font-size: 13px;
+    }
+  }
+
+  &__button {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 24px;
+    height: 48px;
+    width: 100%;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+
+    &:hover, &.active {
+      background: mat-color($primary);
+      color: white;
+    }
+  }
+
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 0 !important;
+  }
+}
+
+.expansion-panel {
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+
+  ::ng-deep .mat-expansion-indicator {
+    height: 24px;
+  }
+
+  ::ng-deep .mat-expansion-panel-header:hover {
+    background: mat-color($primary) !important;
+    ::ng-deep .mat-expansion-panel-header-title {
+      color: white !important;
+    }
+
+    ::ng-deep .mat-expansion-indicator::after {
+      color: white !important;
+    }
+  }
+}
+
+.index {
+  margin-right: 5px;
+}

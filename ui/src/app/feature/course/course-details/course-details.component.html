@@ -1,0 +1,12 @@
+<course-pf-layout>
+    <div class="course-details">
+        <course-pf-course-nav *ngIf="course?.chapters?.length"
+                              class="course-details__nav"
+                              [chapters]="course?.chapters"
+                              (chapterSelect)="chapterSelect($event)"
+        ></course-pf-course-nav>
+        <div class="course-details__content">
+            <course-pf-player *ngIf="selectedChapter?.videoUrl" [src]="'http://localhost:3000/api/course/video/' + selectedChapter.videoUrl"></course-pf-player>
+        </div>
+    </div>
+</course-pf-layout>

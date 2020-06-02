@@ -1,0 +1,13 @@
+.course-details {
+  display: flex;
+  height: 100%;
+
+  &__nav {
+    max-width: 300px;
+    margin-right: 30px;
+  }
+
+  &__content {
+    width: 100%;
+  }
+}

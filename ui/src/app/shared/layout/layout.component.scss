@@ -1,0 +1,80 @@
+@import '../../../styles/variables';
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.mat-app-background, .wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.toolbar {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  position: relative;
+  z-index: 5;
+}
+
+.icon {
+  margin-right: 15px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.logo {
+  margin: 0 20px 8px;
+
+  &__title {
+    font-family: Niconne, serif;
+    font-weight: 300;
+    line-height: 27px;
+    font-size: 20px;
+  }
+
+  &__sub-title {
+    line-height: 0;
+    font-size: 11px;
+    font-weight: 300;
+    margin: 0;
+  }
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.theme-toggle {
+  margin-left: auto;
+}
+
+.is-mobile .toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+.sidenav-container {
+  flex: 1;
+  height: 100%;
+  padding-bottom: 40px;
+  @media screen and (min-width: 600px) {
+    height: calc(100vh - 64px);
+  }
+}
+
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}
+
+.active {
+  background: mat-color($primary);
+  color: white;
+  &:hover, &:focus {
+    background: darken(mat-color($primary), 10%) !important;
+  }
+}

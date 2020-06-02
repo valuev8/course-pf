@@ -1,0 +1,39 @@
+@import "../../../styles/variables";
+
+.course-card {
+  max-width: 300px;
+  padding-top: 0;
+  overflow: hidden;
+  margin-bottom: 20px;
+
+  &__header {
+    display: block;
+    position: relative;
+  }
+
+  &__title {
+    position: absolute;
+    color: white;
+    font-weight: normal;
+    line-height: 31px;
+    top: -4px;
+    text-align: center;
+    width: 210px;
+    left: 50%;
+    margin: 0 0 0 -105px;
+    border: 1px solid;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: none;
+    background: mat-color($primary);
+  }
+
+  &__button {
+    text-align: center;
+
+    button {
+      width: 200px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<course-pf-layout>
+    <h2 class="course-header">Мои Курсы</h2>
+    <div class="course" *ngFor="let course of userCourses | async">
+        <course-pf-card [title]="course.courseName"
+                        [description]="course.courseDesc"
+                        [withButton]="true"
+                        (buttonClick)="startCourse(course)"></course-pf-card>
+    </div>
+    <h2 class="course-header">Все Курсы</h2>
+    <div class="course" *ngFor="let course of allCourses | async">
+        <course-pf-card [title]="course.courseName"
+                        [description]="course.courseDesc"
+                        [withButton]="false">
+        </course-pf-card>
+    </div>
+</course-pf-layout>

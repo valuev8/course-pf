@@ -1,0 +1,56 @@
+@import '~@angular/material/theming';
+
+@mixin common-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $background-color: mat-color($background, card);
+  $is-dark: map-get($theme, is-dark);
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    background: transparent !important;
+    border: none;
+    -webkit-text-fill-color: mat-color($primary);
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  .login-form {
+    border: 1px solid mat-color($primary);
+    background: $background-color;
+  }
+
+  .course-card {
+    border: 1px solid transparent;
+    @if ($is-dark) {
+      border-color: white;
+    }
+  }
+
+  .menu__button {
+    @if ($is-dark) {
+      color: white;
+    } @else {
+      color: mat-color($foreground, text)
+    }
+  }
+
+}
+
+@mixin header-theme($theme) {
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $background-color: mat-color($background, card);
+
+  .main-header {
+    color: $background-color;
+  }
+
+}
+
+@mixin component-themes($theme) {
+  @include header-theme($theme);
+  @include common-theme($theme);
+}

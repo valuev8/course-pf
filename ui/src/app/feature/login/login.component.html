@@ -1,0 +1,41 @@
+<div [ngClass]="{'dark-theme': isDarkTheme | async}" class="wrapper mat-app-background">
+    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="submit()" >
+        <h1 class="login-form__header">{{ isResetActivated ? 'Смена пароля' : 'Войти'}}</h1>
+        <div class="login-form__form-field" *ngIf="email">
+            <mat-form-field>
+                <mat-label>Электронный адрес</mat-label>
+                <input matInput required formControlName="email" autocomplete="username">
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="login-form__form-field">
+            <mat-form-field>
+                <mat-label>Пароль</mat-label>
+                <input type="password" required matInput formControlName="password" autocomplete="current-password">
+            </mat-form-field>
+        </div>
+        <div class="login-form__form-field" *ngIf="confirmPassword">
+            <mat-form-field>
+                <mat-label>Подтвердите пароль</mat-label>
+                <input type="password" required matInput formControlName="confirmPassword" autocomplete="current-password">
+                <mat-error *ngIf="loginForm.hasError('isMatching')">
+                    Пароли не совпадают
+                </mat-error>
+                <mat-error *ngIf="password.hasError('minlength')">
+                    Минимальная длинна пароля - 8 символов
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <mat-error class="login-form__error" *ngIf="errorMsg">{{ errorMsg }}</mat-error>
+        <div class="login-form__button">
+            <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid && loginForm.touched">Войти</button>
+        </div>
+    </form>
+
+    <mat-slide-toggle labelPosition="before"
+                      class="theme-toggle"
+                      [checked]="isDarkTheme | async"
+                      (change)="toggleDarkTheme($event.checked)">
+        Dark Mode
+    </mat-slide-toggle>
+</div>
